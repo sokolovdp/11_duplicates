@@ -1,6 +1,26 @@
 # Anti-Duplicator
 
-[TODO. There will be project description]
+duplicates.py finds duplicate files (names and sizes are equal) in folder
+
+the program is written in Python 3.6
+
+# Use example
+
+python duplicates.py valid_folder_path
+
+# Output sample:
+----------------------------------------
+
+test\bb_test_0002.png
+
+test\bb_test_0002\bb_test_0002.png
+
+----------------------------------------
+
+test\bb_test_0001\bb_test_0003_copy\bb_test_0003.desktop
+
+test\bb_test_0003\bb_test_0003.desktop
+
 
 # Project Goals
 
