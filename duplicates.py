@@ -38,13 +38,13 @@ def get_all_files_info(pathname: "str") -> "list of tuples":
     return all_files
 
 
-def main(pathname: "str"):
-    all_files_info = get_all_files_info(pathname)
+def main(path_name: "str"):
+    all_files_info = get_all_files_info(path_name)
     all_duplicate_files = find_duplicates(all_files_info)
     print_duplicates(all_duplicate_files)
 
 if __name__ == '__main__':
-    path = sys.argv[1:][0]
-    assert os.path.exists(path)
+    dir_name = sys.argv[1:][0]
+    assert os.path.exists(dir_name)
 
-    main(path)
+    main(dir_name)
