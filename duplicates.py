@@ -10,7 +10,7 @@ def print_duplicates(all_duplicate_files: "list of lists"):
             print("name='{}' size={} path='{}'".format(*file))
 
 
-def find_duplicates(all_files: "list of dicts") -> "list":
+def find_duplicates(all_files: "list of dicts") -> "list of lists":
     # find files with duplicate names
     duplicate_names = [name for name, val in Counter([file['name'] for file in all_files]).items() if val > 1]
     potential_duplicates = list()
@@ -44,4 +44,7 @@ def main(pathname: "str"):
     print_duplicates(all_duplicate_files)
 
 if __name__ == '__main__':
-    main(sys.argv[1:][0])
+    path = sys.argv[1:][0]
+    assert os.path.exists(path)
+
+    main(path)
