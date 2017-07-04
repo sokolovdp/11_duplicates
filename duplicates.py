@@ -11,17 +11,17 @@ def print_duplicates(all_duplicate_files: "list of lists"):
 
 
 def find_duplicates(all_files: "list of dicts") -> "list":
+    # find files with duplicate names
     duplicate_names = [name for name, val in Counter([file['name'] for file in all_files]).items() if val > 1]
-
     potential_duplicates = list()
     for name in duplicate_names:
         names_with_sizes = [(file['name'], file['size'], file['path']) for file in all_files if file['name'] == name]
         potential_duplicates.append(names_with_sizes)
 
+    # find files with same name and same size
     full_duplicates = list()
     for files_with_one_name in potential_duplicates:
         sizes = [size for size, val in Counter([file[1] for file in files_with_one_name]).items() if val > 1]
-
         for size in sizes:
             one_name_one_size_files = [file for file in files_with_one_name if file[1] == size]
             full_duplicates.append(one_name_one_size_files)
