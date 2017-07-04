@@ -5,7 +5,7 @@ from collections import Counter
 
 def print_duplicates(all_duplicate_files: "list of lists"):
     for duplicate_files in all_duplicate_files:
-        print("-" * 40)
+        print()
         for file in duplicate_files:
             print("name='{}' size={} path='{}'".format(*file))
 
