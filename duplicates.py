@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8
-
 import sys
 import os
 from collections import Counter
@@ -24,13 +21,13 @@ def find_duplicates(files: "list of dicts"):
                 list_with_sizes.append((file['name'], file['size'], file['path']))
         duplicate_full.append(list_with_sizes)
 
-    for dup in duplicate_full:
-        sizes = Counter([d[1] for d in dup])
+    for files_with_one_name in duplicate_full:
+        sizes = Counter([file[1] for file in files_with_one_name])
         for size in sizes:
-            print_duplicates(size, dup)
+            print_duplicates(size, files_with_one_name)
 
 
-def main(pathname):
+def main(pathname: "str"):
     all_files = list()
     for path, subdirs, files in os.walk(pathname):
         for filename in files:
