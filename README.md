@@ -10,20 +10,20 @@ python duplicates.py valid_folder_path
 ```
 # Output sample:
 ```
-name='bb_test_0002.png' size=58788 path='test\bb_test_0002.png'
-name='bb_test_0002.png' size=58788 path='test\bb_test_0001\bb_test_0002.png'
-name='bb_test_0002.png' size=58788 path='test\bb_test_0002\bb_test_0002.png'
-name='bb_test_0002.png' size=58788 path='test\bb_test_0003\bb_test_0002.png'
+file='test\bb_test_0002.png' (58788 bytes)
+file='test\bb_test_0001\bb_test_0002.png' (58788 bytes)
+file='test\bb_test_0002\bb_test_0002.png' (58788 bytes)
+file='test\bb_test_0003\bb_test_0002.png' (58788 bytes)
 
-name='bb_test_0003.desktop' size=146 path='test\bb_test_0001\bb_test_0003_copy\bb_test_0003.desktop'
-name='bb_test_0003.desktop' size=146 path='test\bb_test_0002\bb_test_0003.desktop'
-name='bb_test_0003.desktop' size=146 path='test\bb_test_0003\bb_test_0003.desktop'
+file='test\bb_test_0001\bb_test_0003_copy\bb_test_0003.desktop' (146 bytes)
+file='test\bb_test_0002\bb_test_0003.desktop' (146 bytes)
+file='test\bb_test_0003\bb_test_0003.desktop' (146 bytes)
 
-name='bb_test_0003.png' size=10463 path='test\bb_test_0001\bb_test_0003_copy\bb_test_0003.png'
-name='bb_test_0003.png' size=10463 path='test\bb_test_0003\bb_test_0003.png'
+file='test\bb_test_0001\bb_test_0003_copy\bb_test_0003.png' (10463 bytes)
+file='test\bb_test_0003\bb_test_0003.png' (10463 bytes)
 
-name='bb_test_0003.vcf' size=698 path='test\bb_test_0001\bb_test_0003_copy\bb_test_0003.vcf'
-name='bb_test_0003.vcf' size=698 path='test\bb_test_0003\bb_test_0003.vcf'
+file='test\bb_test_0001\bb_test_0003_copy\bb_test_0003.vcf' (698 bytes)
+file='test\bb_test_0003\bb_test_0003.vcf' (698 bytes)
 
 Process finished with exit code 0
 ```

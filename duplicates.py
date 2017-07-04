@@ -7,7 +7,7 @@ def print_duplicates(all_duplicate_files: "list of lists"):
     for duplicate_files in all_duplicate_files:
         print()
         for file in duplicate_files:
-            print("name='{}' size={} path='{}'".format(*file))
+            print("file='{}' ({} bytes)".format(file[2], file[1]))
 
 
 def find_duplicates(all_files: "list of dicts") -> "list of lists":
