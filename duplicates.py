@@ -21,8 +21,8 @@ def find_duplicates(all_files: "list of dicts") -> "list":
     # find files with same name and same size
     full_duplicates = list()
     for files_with_one_name in potential_duplicates:
-        sizes = [size for size, val in Counter([file[1] for file in files_with_one_name]).items() if val > 1]
-        for size in sizes:  # list sizes which have at least two or more files
+        duplicate_sizes = [size for size, val in Counter([file[1] for file in files_with_one_name]).items() if val > 1]
+        for size in duplicate_sizes:  # list sizes which have at least two or more files
             one_name_one_size_files = [file for file in files_with_one_name if file[1] == size]
             full_duplicates.append(one_name_one_size_files)
 
