@@ -11,7 +11,7 @@ def print_duplicates(all_duplicate_files: "list"):
 
 
 def find_duplicates(all_files: "list") -> "list":
-    duplicate_names = [name for name, val in Counter([f['name'] for f in all_files]).items() if val > 1]
+    duplicate_names = [name for name, count in Counter([f['name'] for f in all_files]).items() if count > 1]
     potential_duplicates = list()
     for name in duplicate_names:
         potential_duplicates.append([file_info for file_info in all_files if file_info['name'] == name])
