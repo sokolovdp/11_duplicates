@@ -17,8 +17,8 @@ def find_duplicates(all_files: "list") -> "list":
         potential_duplicates.append([file_info for file_info in all_files if file_info['name'] == name])
     duplicate_names_and_sizes = list()
     for files_with_one_name in potential_duplicates:
-        duplicate_sizes = [size for size, val in
-                           Counter([file_info['size'] for file_info in files_with_one_name]).items() if val > 1]
+        duplicate_sizes = [size for size, count in
+                           Counter([file_info['size'] for file_info in files_with_one_name]).items() if count > 1]
         for size in duplicate_sizes:
             one_name_one_size_files = [file_info for file_info in files_with_one_name if file_info['size'] == size]
             duplicate_names_and_sizes.append(one_name_one_size_files)
