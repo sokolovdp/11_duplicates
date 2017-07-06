@@ -10,11 +10,12 @@ def print_duplicates(all_duplicate_files: "list"):
             print("file='{}' ({} bytes)".format(file_info['path'], file_info['size']))
 
 
-def find_duplicates(all_files: "list") -> "list":
-    duplicate_names = [name for name, count in Counter([f['name'] for f in all_files]).items() if count > 1]
+def find_duplicates(all_files_info: "list") -> "list":
+    duplicate_names = [name for name, count in Counter([file_info['name'] for file_info in all_files_info]).items()
+                       if count > 1]
     potential_duplicates = list()
     for name in duplicate_names:
-        potential_duplicates.append([file_info for file_info in all_files if file_info['name'] == name])
+        potential_duplicates.append([file_info for file_info in all_files_info if file_info['name'] == name])
     duplicate_names_and_sizes = list()
     for files_with_one_name in potential_duplicates:
         duplicate_sizes = [size for size, count in
@@ -26,12 +27,12 @@ def find_duplicates(all_files: "list") -> "list":
 
 
 def load_all_files_info(pathname: "str") -> "list":
-    all_files = list()
+    all_files_info = list()
     for path, sub_dirs, files in os.walk(pathname):
         for filename in files:
             full_path = os.path.join(path, filename)
-            all_files.append({'name': filename, 'size': os.path.getsize(full_path), 'path': full_path})
-    return all_files
+            all_files_info.append({'name': filename, 'size': os.path.getsize(full_path), 'path': full_path})
+    return all_files_info
 
 
 def main(path_name: "str"):
