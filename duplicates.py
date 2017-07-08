@@ -1,6 +1,6 @@
 import sys
 import os
-from collections import Counter
+from itertools import groupby
 
 
 def print_duplicates(all_duplicate_files: "list"):
@@ -11,19 +11,13 @@ def print_duplicates(all_duplicate_files: "list"):
 
 
 def find_duplicates(all_files_info: "list") -> "list":
-    duplicate_names = [name for name, count in Counter([file_info['name'] for file_info in all_files_info]).items()
-                       if count > 1]
-    potential_duplicates = list()
-    for name in duplicate_names:
-        potential_duplicates.append([file_info for file_info in all_files_info if file_info['name'] == name])
-    duplicate_names_and_sizes = list()
-    for files_with_one_name in potential_duplicates:
-        duplicate_sizes = [size for size, count in
-                           Counter([file_info['size'] for file_info in files_with_one_name]).items() if count > 1]
-        for size in duplicate_sizes:
-            one_name_one_size_files = [file_info for file_info in files_with_one_name if file_info['size'] == size]
-            duplicate_names_and_sizes.append(one_name_one_size_files)
-    return duplicate_names_and_sizes
+    def key_fun(file_info):
+        return file_info['name'], file_info['size']
+
+    grouped_info = [[key, list(group)] for key, group in groupby(sorted(all_files_info, key=key_fun), key_fun)]
+    duplicates = [group[1] for group in grouped_info if len(group[1]) > 1]
+
+    return duplicates
 
 
 def load_all_files_info(pathname: "str") -> "list":
